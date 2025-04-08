@@ -1,0 +1,120 @@
+---
+title: "bayesian regression"
+output: html_document
+---
+
+
+
+```{r}
+library(ggplot2)
+```
+
+#### Predicting Standard deviation using Gamma Distribution with Gamma Prior (known alpha)
+
+```{r}
+library(MCMCpack)
+# Prior 
+gamma_prior <- function(x, alpha, beta) {
+  return(dgamma(x, shape=alpha, scale=beta))
+}
+
+# Posterior 
+gamma_posterior <- function(x, alpha_likelihood, alpha_prior, beta_prior, sim_data) {
+  n <- length(sim_data)
+  alpha_star <- n * alpha_likelihood + alpha_prior
+  beta_star <- beta_prior + sum(1/sim_data)
+  
+  return(dgamma(x, shape = alpha_star, scale = 1/beta_star))
+}
+```
+
+
+```{r}
+
+stdev <- read.csv('monthly_stdev.csv')
+head(stdev)
+
+max(stdev$AAPL)
+```
+
+```{r}
+
+# Simulation
+#n <- 100
+#true_beta <- .0002
+#sim_data <- rinvgamma(n, shape = 2, scale = true_beta)
+
+sim_data <- stdev$AAPL^2
+hist(sim_data, freq = F)
+```
+
+likelihood for variance inv gamma 
+e value from b/alpha -1 know alpha (2) set equal 2 
+B would be what the variance is 
+
+
+```{r}
+alpha_likelihood <- 2
+
+alpha_prior <- 1
+beta_prior <- .0003
+# instead try some other value 
+
+prior_mean <- alpha_prior*beta_prior
+
+#x_vals <- seq(0, max(sim_data), length.out = 500)
+x_vals <- seq(0, max(stdev$AAPL^2), length.out = 500)
+
+prior_dist <- gamma_prior(x_vals, alpha_prior, beta_prior)
+post_dist <- gamma_posterior(x_vals, alpha_likelihood, alpha_prior, beta_prior, sim_data)
+
+
+ggplot() +
+  geom_line(aes(x = x_vals, y = prior_dist, color = "Prior"), size = 1.2) +
+  geom_line(aes(x = x_vals, y = post_dist, color = "Posterior"), size = 1.2) +
+  geom_vline(aes(xintercept = prior_mean, color = "Prior Mean"), linetype = "dashed", size = 1) + 
+  scale_color_manual(values = c("Prior" = "red", 
+                                "Posterior" = "purple", 
+                                "Prior Mean" = "red")) +
+  labs(x = expression(theta), y = "Density", title = "Gamma Prior vs. Posterior Distribution") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+```
+
+IMperical bayes 
+to choose parameters 
+
+training data to ifnorm alpha 0 and beta 0 
+and then fit the model on posterior 
+
+
+
+
+
+### Supervised ML
+
+```{r}
+# msft <- read.csv('MSFT.csv')
+# head(msft)
+# 
+# 
+# y <- msft$MSFT_STDEV
+# 
+# X_data <- subset(msft, select = -c(MSFT_STDEV, Next_MSFT_RETURN))
+# X_numeric <- X_raw[sapply(X_raw, is.numeric)]
+# 
+# X_scaled <- scale(X_numeric)
+# X <- cbind(X_scaled, bias = 1)
+```
+
+
+```{r}
+# n <- length(data)
+# alpha_star <- n * alpha_likelihood + alpha_prior
+# beta_star <- beta_prior + sum(data)
+
+
+```
+
+
