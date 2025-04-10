@@ -117,4 +117,74 @@ and then fit the model on posterior
 
 ```
 
+```{r}
+stdev_df <- read.csv('monthly_stdev.csv')
+colnames(stdev_df)
+```
+```{r}
+# testing tech stocks since thats already in the portfolio
 
+# get tech stocks
+# ideally this should pull based on sector column
+tech_df <- stdev_df[, c("AVGO", "CRM", "CSCO", "GDDY", "HUBS", "MSFT",
+                        "NOW", "QCOM", "TSM")]
+
+head(tech_df)
+
+# getting variances of all stocks in sector
+variance_df <- tech_df^2
+head(variance_df)
+
+# flattening variance
+flatten_variance <- unlist(variance_df)
+#flatten_variance
+
+```
+
+```{r}
+# defining alpha likelihood
+alpha_likelihood <- 2
+
+# defining priors
+alpha_prior <- 1
+beta_prior <- mean(flatten_variance) / alpha_prior
+
+# defining prior mean
+prior_mean <- alpha_prior*beta_prior
+
+#x_vals <- seq(0, max(sim_data), length.out = 500)
+#x_vals <- seq(0, max(stdev$AAPL^2), length.out = 500)
+x_vals <- seq(0, quantile(sim_data, 0.99), length.out = 500)
+
+prior_dist <- gamma_prior(x_vals, alpha_prior, beta_prior)
+post_dist <- gamma_posterior(x_vals, alpha_likelihood, alpha_prior, beta_prior, sim_data)
+
+
+ggplot() +
+  geom_line(aes(x = x_vals, y = prior_dist, color = "Prior"), size = 1.2) +
+  geom_line(aes(x = x_vals, y = post_dist, color = "Posterior"), size = 1.2) +
+  geom_vline(aes(xintercept = prior_mean, color = "Prior Mean"), linetype = "dashed", size = 1) + 
+  scale_color_manual(values = c("Prior" = "red", 
+                                "Posterior" = "purple", 
+                                "Prior Mean" = "red")) +
+  labs(x = expression(theta), Dy = "Density", title = "Gamma Prior vs. Posterior Distribution (AAPL)") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+```
+
+```{r}
+# assume we are not very certain (confident) about what the true risk value is.
+# so prior is flatter and spread out - open to wide range of variance value
+# this is what "greater uncertainty" means
+
+
+# for bayesian - you need to exclude target value from the stack?
+# prior is weak but informed because youre not confident of the true value
+# but it reflects informed data rather than random
+
+
+# after AAPL data is included, you see posterior is taller and narrower
+# contrast between prior and posterior shows how evidence refines beliefs
+
+```

@@ -1,0 +1,14 @@
+yfinance
+numpy
+panda
+datetime
+#pandas_datareader.data
+cpi
+wbdata
+sklearn.preprocessing
+#tensorflow.keras.models
+#tensorflow.keras.layers
+#sklearn.metrics
+matplotlib
+tensorflow
+scikit-learn
