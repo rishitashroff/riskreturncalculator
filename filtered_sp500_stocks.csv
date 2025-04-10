@@ -1,0 +1,406 @@
+,Last_Price,Company Name,Sector
+AAPL,198.85000610351562,Apple Inc.,Technology
+MSFT,390.489990234375,Microsoft Corporation,Technology
+NVDA,114.33000183105469,NVIDIA Corporation,Technology
+AMZN,191.10000610351562,"Amazon.com, Inc.",Consumer Discretionary
+GOOGL,158.7100067138672,Alphabet Inc.,Communication Services
+GOOG,161.05999755859375,Alphabet Inc.,Communication Services
+BRK-B,521.4099731445312,Berkshire Hathaway Inc.,Financials
+WMT,89.5999984741211,Walmart Inc.,Consumer Staples
+LLY,753.7100219726562,Eli Lilly and Company,Healthcare
+JPM,234.33999633789062,JPMorgan Chase & Co.,Financials
+UNH,578.5,UnitedHealth Group Incorporated,Healthcare
+XOM,105.80000305175781,Exxon Mobil Corporation,Energy
+COST,965.1900024414062,Costco Wholesale Corporation,Consumer Staples
+NFLX,945.469970703125,"Netflix, Inc.",Communication Services
+ORCL,139.69000244140625,Oracle Corporation,Technology
+PG,162.32000732421875,The Procter & Gamble Company,Consumer Staples
+JNJ,150.97000122070312,Johnson & Johnson,Healthcare
+HD,355.3900146484375,"The Home Depot, Inc.",Consumer Discretionary
+KO,69.94999694824219,The Coca-Cola Company,Consumer Staples
+BAC,37.150001525878906,Bank of America Corporation,Financials
+CVX,146.02999877929688,Chevron Corporation,Energy
+CRM,265.1700134277344,"Salesforce, Inc.",Technology
+CSCO,58.130001068115234,"Cisco Systems, Inc.",Technology
+ABT,127.04000091552734,Abbott Laboratories,Healthcare
+IBM,235.30999755859375,International Business Machines Corporation,Technology
+MCD,303.9599914550781,McDonald's Corporation,Consumer Discretionary
+WFC,66.33000183105469,Wells Fargo & Company,Financials
+LIN,445.9700012207031,Linde plc,Materials
+MRK,81.91000366210938,"Merck & Co., Inc.",Healthcare
+GE,187.27000427246094,General Electric Company,Industrials
+PEP,145.58999633789062,"PepsiCo, Inc.",Consumer Staples
+T,26.469999313354492,AT&T Inc.,Communication Services
+ACN,299.94000244140625,Accenture plc,Technology
+ISRG,522.9500122070312,"Intuitive Surgical, Inc.",Healthcare
+VZ,42.88999938964844,Verizon Communications Inc.,Communication Services
+AXP,262.3599853515625,American Express Company,Financials
+MS,111.69999694824219,Morgan Stanley,Financials
+RTX,128.42999267578125,RTX Corporation,Industrials
+TMO,453.54998779296875,Thermo Fisher Scientific Inc.,Healthcare
+GS,516.8699951171875,"The Goldman Sachs Group, Inc.",Financials
+INTU,596.47998046875,Intuit Inc.,Technology
+DIS,91.44000244140625,The Walt Disney Company,Communication Services
+PGR,270.1099853515625,The Progressive Corporation,Financials
+QCOM,143.58999633789062,QUALCOMM Incorporated,Technology
+AMD,96.83999633789062,"Advanced Micro Devices, Inc.",Technology
+AMGN,291.0899963378906,Amgen Inc.,Healthcare
+ADBE,364.6400146484375,Adobe Inc.,Technology
+TXN,169.5,Texas Instruments Incorporated,Technology
+BKNG,4616.31982421875,Booking Holdings Inc.,Consumer Discretionary
+SPGI,473.989990234375,S&P Global Inc.,Financials
+CAT,301.010009765625,Caterpillar Inc.,Industrials
+BSX,96.7699966430664,Boston Scientific Corporation,Healthcare
+TJX,126.05000305175781,"The TJX Companies, Inc.",Consumer Discretionary
+BLK,897.0800170898438,"BlackRock, Inc.",Financials
+NEE,67.58000183105469,"NextEra Energy, Inc.",Utilities
+SYK,362.9700012207031,Stryker Corporation,Healthcare
+DHR,191.88999938964844,Danaher Corporation,Healthcare
+SCHW,75.25,The Charles Schwab Corporation,Financials
+UNP,223.52999877929688,Union Pacific Corporation,Industrials
+CMCSA,35.18000030517578,Comcast Corporation,Communication Services
+GILD,105.25,"Gilead Sciences, Inc.",Healthcare
+HON,199.10000610351562,Honeywell International Inc.,Industrials
+PFE,22.489999771118164,Pfizer Inc.,Healthcare
+LOW,223.1999969482422,"Lowe's Companies, Inc.",Consumer Discretionary
+VRTX,482.29998779296875,Vertex Pharmaceuticals Incorporated,Healthcare
+DE,452.5899963378906,Deere & Company,Industrials
+AMAT,149.72999572753906,"Applied Materials, Inc.",Technology
+BA,160.82000732421875,The Boeing Company,Industrials
+C,64.1500015258789,Citigroup Inc.,Financials
+ADP,294.69000244140625,"Automatic Data Processing, Inc.",Technology
+FI,210.3800048828125,"Fiserv, Inc.",Technology
+COP,91.51000213623047,ConocoPhillips,Energy
+CB,284.6199951171875,Chubb Limited,Financials
+MMC,229.55999755859375,"Marsh & McLennan Companies, Inc.",Financials
+ETN,283.5899963378906,Eaton Corporation plc,Industrials
+MDT,85.27999877929688,Medtronic plc,Healthcare
+BMY,53.7400016784668,Bristol-Myers Squibb Company,Healthcare
+LMT,462.239990234375,Lockheed Martin Corporation,Industrials
+SBUX,88.68000030517578,Starbucks Corporation,Consumer Discretionary
+ELV,435.67999267578125,"Elevance Health, Inc.",Healthcare
+ADI,196.6300048828125,"Analog Devices, Inc.",Technology
+AMT,207.47999572753906,American Tower Corporation,Real Estate
+SO,87.80000305175781,The Southern Company,Utilities
+MO,56.36000061035156,"Altria Group, Inc.",Consumer Staples
+INTC,21.530000686645508,Intel Corporation,Technology
+KLAC,703.3099975585938,KLA Corporation,Technology
+PLD,98.22000122070312,"Prologis, Inc.",Real Estate
+CME,254.1300048828125,CME Group Inc.,Financials
+LRCX,71.11000061035156,Lam Research Corporation,Technology
+WELL,141.49000549316406,Welltower Inc.,Real Estate
+DUK,116.30999755859375,Duke Energy Corporation,Utilities
+WM,224.4199981689453,"Waste Management, Inc.",Industrials
+ICE,156.80999755859375,"Intercontinental Exchange, Inc.",Financials
+CVS,70.18000030517578,CVS Health Corporation,Healthcare
+NKE,59.31999969482422,"NIKE, Inc.",Consumer Discretionary
+MU,77.87000274658203,"Micron Technology, Inc.",Technology
+CI,319.989990234375,The Cigna Group,Healthcare
+MDLZ,66.19000244140625,"Mondelez International, Inc.",Consumer Staples
+UPS,99.66000366210938,"United Parcel Service, Inc.",Industrials
+MCK,671.760009765625,McKesson Corporation,Healthcare
+SHW,336.25,The Sherwin-Williams Company,Materials
+AJG,323.82000732421875,Arthur J. Gallagher & Co.,Financials
+CTAS,203.99000549316406,Cintas Corporation,Industrials
+AON,373.3699951171875,Aon plc,Financials
+APH,66.18000030517578,Amphenol Corporation,Technology
+MCO,438.5899963378906,Moody's Corporation,Financials
+EQIX,797.4299926757812,"Equinix, Inc.",Real Estate
+ORLY,1348.449951171875,"O'Reilly Automotive, Inc.",Consumer Discretionary
+TT,342.79998779296875,Trane Technologies plc,Industrials
+PH,596.0999755859375,Parker-Hannifin Corporation,Industrials
+RSG,239.25999450683594,"Republic Services, Inc.",Industrials
+MMM,138.32000732421875,3M Company,Industrials
+NOC,512.2999877929688,Northrop Grumman Corporation,Industrials
+CL,90.2300033569336,Colgate-Palmolive Company,Consumer Staples
+GD,271.5199890136719,General Dynamics Corporation,Industrials
+CDNS,264.6499938964844,"Cadence Design Systems, Inc.",Technology
+MSI,417.19000244140625,"Motorola Solutions, Inc.",Technology
+ITW,234.8699951171875,Illinois Tool Works Inc.,Industrials
+WMB,56.41999816894531,"The Williams Companies, Inc.",Energy
+ECL,237.5500030517578,Ecolab Inc.,Materials
+COF,174.91000366210938,Capital One Financial Corporation,Financials
+SNPS,428.70001220703125,"Synopsys, Inc.",Technology
+MAR,233.38999938964844,"Marriott International, Inc.",Consumer Discretionary
+PNC,160.22999572753906,"The PNC Financial Services Group, Inc.",Financials
+EOG,114.05000305175781,"EOG Resources, Inc.",Energy
+REGN,576.719970703125,"Regeneron Pharmaceuticals, Inc.",Healthcare
+USB,39.29999923706055,U.S. Bancorp,Financials
+APD,270.20001220703125,"Air Products and Chemicals, Inc.",Materials
+BDX,209.35000610351562,"Becton, Dickinson and Company",Healthcare
+AZO,3575.1201171875,"AutoZone, Inc.",Consumer Discretionary
+ROP,553.760009765625,"Roper Technologies, Inc.",Technology
+EMR,104.43000030517578,Emerson Electric Co.,Industrials
+SPG,153.17999267578125,"Simon Property Group, Inc.",Real Estate
+AFL,105.30000305175781,Aflac Incorporated,Financials
+BK,79.3499984741211,The Bank of New York Mellon Corporation,Financials
+MNST,58.25,Monster Beverage Corporation,Consumer Staples
+CPRT,58.52000045776367,"Copart, Inc.",Industrials
+RCL,209.50999450683594,Royal Caribbean Cruises Ltd.,Consumer Discretionary
+TRV,248.10000610351562,"The Travelers Companies, Inc.",Financials
+ADSK,263.5299987792969,"Autodesk, Inc.",Technology
+NEM,48.75,Newmont Corporation,Materials
+AEP,102.3499984741211,"American Electric Power Company, Inc.",Utilities
+CSX,28.65999984741211,CSX Corporation,Industrials
+COR,273.8900146484375,"Cencora, Inc.",Healthcare
+PAYX,146.14999389648438,"Paychex, Inc.",Technology
+FDX,217.94000244140625,FedEx Corporation,Industrials
+JCI,78.83000183105469,Johnson Controls International plc,Industrials
+MET,75.23999786376953,"MetLife, Inc.",Financials
+ALL,193.0,The Allstate Corporation,Financials
+OKE,84.86000061035156,"ONEOK, Inc.",Energy
+NSC,222.02000427246094,Norfolk Southern Corporation,Industrials
+DLR,145.77000427246094,"Digital Realty Trust, Inc.",Real Estate
+PSA,282.2900085449219,Public Storage,Real Estate
+TFC,37.9900016784668,Truist Financial Corporation,Financials
+PCAR,93.93000030517578,PACCAR Inc,Industrials
+AIG,82.81999969482422,"American International Group, Inc.",Financials
+SLB,35.97999954223633,Schlumberger Limited,Energy
+FCX,33.7400016784668,Freeport-McMoRan Inc.,Materials
+O,53.97999954223633,Realty Income Corporation,Real Estate
+GWW,965.3699951171875,"W.W. Grainger, Inc.",Industrials
+AMP,473.0,"Ameriprise Financial, Inc.",Financials
+FICO,1848.0,Fair Isaac Corporation,Technology
+ROST,137.0,"Ross Stores, Inc.",Consumer Discretionary
+KMB,135.14999389648438,Kimberly-Clark Corporation,Consumer Staples
+EXC,44.29999923706055,Exelon Corporation,Utilities
+D,52.25,"Dominion Energy, Inc.",Utilities
+TGT,97.69000244140625,Target Corporation,Consumer Staples
+SRE,68.05999755859375,Sempra,Utilities
+FAST,76.47000122070312,Fastenal Company,Industrials
+KR,65.83000183105469,The Kroger Co.,Consumer Staples
+AXON,559.8400268554688,"Axon Enterprise, Inc.",Industrials
+HES,137.97000122070312,Hess Corporation,Energy
+CCI,95.54000091552734,Crown Castle Inc.,Real Estate
+NDAQ,71.98999786376953,"Nasdaq, Inc.",Financials
+EW,69.9000015258789,Edwards Lifesciences Corporation,Healthcare
+PEG,81.83000183105469,Public Service Enterprise Group Incorporated,Utilities
+CMI,296.54998779296875,Cummins Inc.,Industrials
+YUM,145.4499969482422,"Yum! Brands, Inc.",Consumer Discretionary
+LHX,214.35000610351562,"L3Harris Technologies, Inc.",Industrials
+PWR,269.6000061035156,"Quanta Services, Inc.",Industrials
+URI,611.1199951171875,"United Rentals, Inc.",Industrials
+XEL,68.58000183105469,Xcel Energy Inc.,Utilities
+BKR,38.75,Baker Hughes Company,Energy
+FIS,72.41000366210938,"Fidelity National Information Services, Inc.",Technology
+DHI,121.16000366210938,"D.R. Horton, Inc.",Consumer Discretionary
+OXY,40.22999954223633,Occidental Petroleum Corporation,Energy
+F,9.5,Ford Motor Company,Consumer Discretionary
+AME,161.0,"AMETEK, Inc.",Industrials
+GRMN,192.7100067138672,Garmin Ltd.,Technology
+GLW,43.2599983215332,Corning Incorporated,Technology
+PCG,16.809999465942383,PG&E Corporation,Utilities
+PRU,103.91000366210938,"Prudential Financial, Inc.",Financials
+TTWO,208.1300048828125,"Take-Two Interactive Software, Inc.",Communication Services
+ED,105.7699966430664,"Consolidated Edison, Inc.",Utilities
+VLO,115.9000015258789,Valero Energy Corporation,Energy
+CTSH,72.88999938964844,Cognizant Technology Solutions Corporation,Technology
+CBRE,121.2699966430664,"CBRE Group, Inc.",Real Estate
+EA,136.5800018310547,Electronic Arts Inc.,Communication Services
+ODFL,165.49000549316406,"Old Dominion Freight Line, Inc.",Industrials
+SYY,71.06999969482422,Sysco Corporation,Consumer Staples
+ETR,80.51000213623047,Entergy Corporation,Utilities
+HUM,285.5299987792969,Humana Inc.,Healthcare
+ACGL,91.4800033569336,Arch Capital Group Ltd.,Financials
+BRO,116.63999938964844,"Brown & Brown, Inc.",Financials
+HSY,164.16000366210938,The Hershey Company,Consumer Staples
+HIG,116.37000274658203,"The Hartford Insurance Group, Inc.",Financials
+WEC,104.36000061035156,"WEC Energy Group, Inc.",Utilities
+STZ,183.39999389648438,"Constellation Brands, Inc.",Consumer Staples
+CSGP,78.69999694824219,"CoStar Group, Inc.",Real Estate
+IDXX,397.1000061035156,"IDEXX Laboratories, Inc.",Healthcare
+GIS,58.060001373291016,"General Mills, Inc.",Consumer Staples
+RMD,216.44000244140625,ResMed Inc.,Healthcare
+VMC,239.52999877929688,Vulcan Materials Company,Materials
+CAH,130.4499969482422,"Cardinal Health, Inc.",Healthcare
+WTW,314.80999755859375,Willis Towers Watson Public Limited Company,Financials
+IT,406.1300048828125,"Gartner, Inc.",Technology
+CNC,62.630001068115234,Centene Corporation,Healthcare
+A,107.05000305175781,"Agilent Technologies, Inc.",Healthcare
+LYV,131.75,"Live Nation Entertainment, Inc.",Communication Services
+EXR,135.69000244140625,Extra Space Storage Inc.,Real Estate
+WAB,175.82000732421875,Westinghouse Air Brake Technologies Corporation,Industrials
+EQT,50.16999816894531,EQT Corporation,Energy
+MLM,481.6300048828125,"Martin Marietta Materials, Inc.",Materials
+TPL,1263.489990234375,Texas Pacific Land Corporation,Energy
+VTR,65.58999633789062,"Ventas, Inc.",Real Estate
+EBAY,61.959999084472656,eBay Inc.,Consumer Discretionary
+LEN,108.66000366210938,Lennar Corporation,Consumer Discretionary
+AVB,200.38999938964844,"AvalonBay Communities, Inc.",Real Estate
+K,82.26000213623047,Kellanova,Consumer Staples
+RJF,136.27999877929688,"Raymond James Financial, Inc.",Financials
+EFX,224.44000244140625,Equifax Inc.,Industrials
+MTB,168.05999755859375,M&T Bank Corporation,Financials
+ROK,242.42999267578125,"Rockwell Automation, Inc.",Industrials
+TSCO,51.380001068115234,Tractor Supply Company,Consumer Discretionary
+ANSS,309.7200012207031,"ANSYS, Inc.",Technology
+DTE,130.50999450683594,DTE Energy Company,Utilities
+MPWR,561.8400268554688,"Monolithic Power Systems, Inc.",Technology
+NUE,115.5,Nucor Corporation,Materials
+CCL,19.610000610351562,Carnival Corporation & plc,Consumer Discretionary
+EQR,66.86000061035156,Equity Residential,Real Estate
+DXCM,66.83999633789062,"DexCom, Inc.",Healthcare
+AEE,96.3499984741211,Ameren Corporation,Utilities
+DD,61.95000076293945,"DuPont de Nemours, Inc.",Materials
+IP,49.02000045776367,International Paper Company,Consumer Discretionary
+ROL,53.11000061035156,"Rollins, Inc.",Consumer Discretionary
+TKO,148.5399932861328,"TKO Group Holdings, Inc.",Communication Services
+WRB,66.93000030517578,W. R. Berkley Corporation,Financials
+PPL,34.15999984741211,PPL Corporation,Utilities
+CHD,101.91000366210938,"Church & Dwight Co., Inc.",Consumer Staples
+IRM,84.48999786376953,Iron Mountain Incorporated,Real Estate
+TYL,564.97998046875,"Tyler Technologies, Inc.",Technology
+MCHP,44.900001525878906,Microchip Technology Incorporated,Technology
+LVS,33.72999954223633,Las Vegas Sands Corp.,Consumer Discretionary
+FITB,35.81999969482422,Fifth Third Bancorp,Financials
+STT,82.31999969482422,State Street Corporation,Financials
+CNP,36.2599983215332,"CenterPoint Energy, Inc.",Utilities
+ATO,148.88999938964844,Atmos Energy Corporation,Utilities
+PPG,103.11000061035156,"PPG Industries, Inc.",Materials
+VRSN,244.6300048828125,"VeriSign, Inc.",Technology
+DRI,196.35000610351562,"Darden Restaurants, Inc.",Consumer Discretionary
+HPQ,24.280000686645508,HP Inc.,Technology
+SBAC,212.13999938964844,SBA Communications Corporation,Real Estate
+DOV,165.86000061035156,Dover Corporation,Industrials
+WBD,9.260000228881836,"Warner Bros. Discovery, Inc.",Communication Services
+FE,39.380001068115234,FirstEnergy Corp.,Utilities
+GPN,90.26000213623047,Global Payments Inc.,Industrials
+MTD,1061.6600341796875,Mettler-Toledo International Inc.,Healthcare
+TDY,468.69000244140625,Teledyne Technologies Incorporated,Technology
+STE,222.94000244140625,STERIS plc,Healthcare
+EIX,56.060001373291016,Edison International,Utilities
+ADM,44.380001068115234,Archer-Daniels-Midland Company,Consumer Staples
+NVR,7121.08984375,"NVR, Inc.",Consumer Discretionary
+TSN,59.7599983215332,"Tyson Foods, Inc.",Consumer Staples
+CMS,71.12999725341797,CMS Energy Corporation,Utilities
+CINF,134.6300048828125,Cincinnati Financial Corporation,Financials
+ERIE,402.0,Erie Indemnity Company,Financials
+EXPE,161.67999267578125,"Expedia Group, Inc.",Consumer Discretionary
+ES,56.310001373291016,Eversource Energy,Utilities
+ZBH,103.44000244140625,"Zimmer Biomet Holdings, Inc.",Healthcare
+MKC,75.9000015258789,"McCormick & Company, Incorporated",Consumer Staples
+EL,56.15999984741211,The Estee Lauder Companies Inc.,Consumer Staples
+DVN,31.06999969482422,Devon Energy Corporation,Energy
+TROW,90.16000366210938,"T. Rowe Price Group, Inc.",Financials
+HBAN,13.710000038146973,Huntington Bancshares Incorporated,Financials
+WAT,336.5199890136719,Waters Corporation,Healthcare
+LII,561.1699829101562,Lennox International Inc.,Industrials
+CTRA,25.8700008392334,Coterra Energy Inc.,Energy
+PHM,97.16999816894531,"PulteGroup, Inc.",Consumer Discretionary
+WSM,158.25,"Williams-Sonoma, Inc.",Consumer Discretionary
+LH,230.47999572753906,Labcorp Holdings Inc.,Healthcare
+NRG,97.38999938964844,"NRG Energy, Inc.",Utilities
+WY,26.559999465942383,Weyerhaeuser Company,Real Estate
+HAL,22.06999969482422,Halliburton Company,Energy
+MAA,157.85000610351562,"Mid-America Apartment Communities, Inc.",Real Estate
+MOH,340.0899963378906,"Molina Healthcare, Inc.",Healthcare
+HUBB,351.95001220703125,Hubbell Incorporated,Industrials
+IFF,72.97000122070312,International Flavors & Fragrances Inc.,Materials
+STLD,122.6500015258789,"Steel Dynamics, Inc.",Materials
+L,86.33000183105469,Loews Corporation,Financials
+NTRS,93.2699966430664,Northern Trust Corporation,Financials
+DGX,164.05999755859375,Quest Diagnostics Incorporated,Healthcare
+ESS,271.95001220703125,"Essex Property Trust, Inc.",Real Estate
+RF,20.0,Regions Financial Corporation,Financials
+PTC,149.24000549316406,PTC Inc.,Technology
+NI,38.150001525878906,NiSource Inc.,Utilities
+BIIB,120.48999786376953,Biogen Inc.,Healthcare
+DECK,116.05999755859375,Deckers Outdoor Corporation,Consumer Discretionary
+NTAP,86.0999984741211,"NetApp, Inc.",Technology
+PFG,77.2699966430664,"Principal Financial Group, Inc.",Financials
+SNA,329.8800048828125,Snap-on Incorporated,Industrials
+CLX,139.82000732421875,The Clorox Company,Consumer Staples
+LUV,28.549999237060547,Southwest Airlines Co.,Industrials
+PKG,189.44000244140625,Packaging Corporation of America,Consumer Discretionary
+ON,39.20000076293945,ON Semiconductor Corporation,Technology
+HRL,29.709999084472656,Hormel Foods Corporation,Consumer Staples
+FDS,426.82000732421875,FactSet Research Systems Inc.,Financials
+BF-B,34.119998931884766,Brown-Forman Corporation,Consumer Staples
+KEY,14.520000457763672,KeyCorp,Financials
+GPC,113.9800033569336,Genuine Parts Company,Consumer Discretionary
+BAX,30.75,Baxter International Inc.,Healthcare
+STX,74.29000091552734,Seagate Technology Holdings plc,Technology
+GEN,25.40999984741211,Gen Digital Inc.,Technology
+DPZ,456.3500061035156,"Domino's Pizza, Inc.",Consumer Discretionary
+DLTR,72.56999969482422,"Dollar Tree, Inc.",Consumer Staples
+COO,77.9000015258789,"The Cooper Companies, Inc.",Healthcare
+LNT,60.41999816894531,Alliant Energy Corporation,Utilities
+FFIV,264.1400146484375,"F5, Inc.",Technology
+EXPD,109.93000030517578,"Expeditors International of Washington, Inc.",Industrials
+TRMB,61.4900016784668,Trimble Inc.,Technology
+JBL,137.3800048828125,Jabil Inc.,Technology
+OMC,76.5199966430664,Omnicom Group Inc.,Communication Services
+EVRG,65.16999816894531,"Evergy, Inc.",Utilities
+EG,348.3800048828125,"Everest Group, Ltd.",Financials
+UDR,41.06999969482422,"UDR, Inc.",Real Estate
+WST,203.52999877929688,"West Pharmaceutical Services, Inc.",Healthcare
+J,118.54000091552734,Jacobs Solutions Inc.,Industrials
+JBHT,141.64999389648438,"J.B. Hunt Transport Services, Inc.",Industrials
+BLDR,124.7300033569336,"Builders FirstSource, Inc.",Industrials
+ARE,80.81999969482422,"Alexandria Real Estate Equities, Inc.",Real Estate
+TPR,67.27999877929688,"Tapestry, Inc.",Consumer Discretionary
+PNR,84.02999877929688,Pentair plc,Industrials
+KIM,20.15999984741211,Kimco Realty Corporation,Real Estate
+MAS,63.77000045776367,Masco Corporation,Industrials
+BBY,63.650001525878906,"Best Buy Co., Inc.",Consumer Discretionary
+AVY,168.86000061035156,Avery Dennison Corporation,Consumer Discretionary
+HOLX,59.310001373291016,"Hologic, Inc.",Healthcare
+DOC,18.639999389648438,"Healthpeak Properties, Inc.",Real Estate
+BALL,46.68000030517578,Ball Corporation,Consumer Discretionary
+IEX,173.8000030517578,IDEX Corporation,Industrials
+RL,208.3699951171875,Ralph Lauren Corporation,Consumer Discretionary
+TER,79.44000244140625,"Teradyne, Inc.",Technology
+REG,69.66000366210938,Regency Centers Corporation,Real Estate
+WDC,36.29999923706055,Western Digital Corporation,Technology
+ZBRA,243.77000427246094,Zebra Technologies Corporation,Technology
+JKHY,170.7100067138672,"Jack Henry & Associates, Inc.",Technology
+KMX,80.05999755859375,"CarMax, Inc.",Consumer Discretionary
+TAP,60.58000183105469,Molson Coors Beverage Company,Consumer Staples
+CAG,25.690000534057617,"Conagra Brands, Inc.",Consumer Staples
+SJM,115.08000183105469,The J. M. Smucker Company,Consumer Staples
+DVA,152.86000061035156,DaVita Inc.,Healthcare
+RVTY,101.33999633789062,"Revvity, Inc.",Healthcare
+ALGN,165.02999877929688,"Align Technology, Inc.",Healthcare
+TXT,66.77999877929688,Textron Inc.,Industrials
+CPT,111.70999908447266,Camden Property Trust,Real Estate
+CF,70.5,"CF Industries Holdings, Inc.",Materials
+UHS,183.07000732421875,"Universal Health Services, Inc.",Healthcare
+POOL,313.55999755859375,Pool Corporation,Industrials
+JNPR,35.150001525878906,"Juniper Networks, Inc.",Technology
+AKAM,76.3499984741211,"Akamai Technologies, Inc.",Technology
+CPB,38.25,The Campbell's Company,Consumer Staples
+INCY,58.86000061035156,Incyte Corporation,Healthcare
+BXP,61.59000015258789,"BXP, Inc.",Real Estate
+CHRW,91.94000244140625,"C.H. Robinson Worldwide, Inc.",Industrials
+PNW,90.62000274658203,Pinnacle West Capital Corporation,Utilities
+LKQ,41.61000061035156,LKQ Corporation,Consumer Discretionary
+NDSN,187.2899932861328,Nordson Corporation,Industrials
+GL,122.62999725341797,Globe Life Inc.,Financials
+HST,14.220000267028809,"Host Hotels & Resorts, Inc.",Real Estate
+BG,74.29000091552734,Bunge Global SA,Consumer Staples
+SWK,64.22000122070312,"Stanley Black & Decker, Inc.",Industrials
+AIZ,193.24000549316406,"Assurant, Inc.",Financials
+BEN,18.579999923706055,"Franklin Resources, Inc.",Financials
+SWKS,60.27000045776367,"Skyworks Solutions, Inc.",Technology
+EMN,81.4800033569336,Eastman Chemical Company,Materials
+WBA,10.779999732971191,"Walgreens Boots Alliance, Inc.",Healthcare
+IPG,24.969999313354492,"The Interpublic Group of Companies, Inc.",Communication Services
+VTRS,7.789999961853027,Viatris Inc.,Healthcare
+AOS,62.560001373291016,A. O. Smith Corporation,Industrials
+MGM,29.93000030517578,MGM Resorts International,Consumer Discretionary
+TECH,54.06999969482422,Bio-Techne Corporation,Healthcare
+HSIC,66.16000366210938,"Henry Schein, Inc.",Healthcare
+WYNN,75.83000183105469,"Wynn Resorts, Limited",Consumer Discretionary
+AES,11.140000343322754,The AES Corporation,Utilities
+MOS,24.68000030517578,The Mosaic Company,Materials
+FRT,90.37999725341797,Federal Realty Investment Trust,Real Estate
+HAS,55.18000030517578,"Hasbro, Inc.",Consumer Discretionary
+MKTX,203.19000244140625,MarketAxess Holdings Inc.,Financials
+PARA,11.140000343322754,Paramount Global,Communication Services
+MTCH,29.190000534057617,"Match Group, Inc.",Communication Services
+ALB,60.470001220703125,Albemarle Corporation,Materials
+CRL,139.07000732421875,"Charles River Laboratories International, Inc.",Healthcare
+MHK,108.94999694824219,"Mohawk Industries, Inc.",Consumer Discretionary
+IVZ,13.649999618530273,Invesco Ltd.,Financials
+APA,16.709999084472656,APA Corporation,Energy
+^GSPC,5456.89990234375,,
