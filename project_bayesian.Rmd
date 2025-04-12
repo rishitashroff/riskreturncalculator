@@ -1,0 +1,269 @@
+---
+title: "project_bayesian"
+output: html_document
+date: "2025-04-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+# importing libraries
+library(ggplot2)
+library(MCMCpack)
+library(shiny)
+library(bslib)
+
+```
+
+```{r}
+# loading sp500 stock list
+sp500_stocks <- read.csv("sp500_stocks.csv")
+#head(sp500_stocks)
+
+```
+
+```{r}
+# loading final data
+stock_data <- read.csv("finaldata.csv")
+#head(stock_data)
+
+```
+
+
+
+```{r}
+# getting stocks columns in finaldata
+column_names <- grep("_(RETURN|STDDEV|ROLL_AVG)$", colnames(stock_data), value = TRUE)
+
+# extracting ticker names from those columns
+extracted_tickers <- unique(sub("_(RETURN|STDDEV|ROLL_AVG)$", "", column_names))
+
+# filtering sp500_stocks using the extracted tickers
+sp500_stocks <- sp500_stocks[sp500_stocks$Ticker %in% extracted_tickers, ]
+#head(sp500_stocks)
+
+```
+
+
+```{r}
+
+similar_stocks <- function(stock) {
+  
+  # getting sector in which the stock is
+  sector <- sp500_stocks$Sector[sp500_stocks$Ticker == stock]
+  
+  # getting peers in the same sector
+  peers <- sp500_stocks$Ticker[sp500_stocks$Sector == sector]
+  
+  # excluding the input stock
+  peers <- peers[peers != stock]
+  
+  return(peers)
+  
+}
+
+input_stock <- similar_stocks("AMZN")
+#input_stock
+
+```
+
+
+
+#### Predicting Standard deviation using Gamma Distribution with Gamma Prior (known alpha)
+
+```{r}
+
+# Prior 
+gamma_prior <- function(x, alpha, beta) {
+  return(dgamma(x, shape=alpha, scale=beta))
+}
+
+# Posterior 
+gamma_posterior <- function(x, alpha_likelihood, alpha_prior, beta_prior, sim_data) {
+  n <- length(sim_data)
+  alpha_star <- n * alpha_likelihood + alpha_prior
+  beta_star <- beta_prior + sum(1/sim_data)
+  
+  return(dgamma(x, shape = alpha_star, scale = 1/beta_star))
+}
+```
+
+```{r}
+
+get_filtered_df <- function(sim_stock) {
+  
+  # getting macro columns
+  macro_cols <- c("Inflation.Rate", "RF")
+
+  # getting return, stddev, roll avg for similar stocks
+  stock_cols <- as.vector(outer(sim_stock,
+                              c("RETURN", "STDEV", "ROLL_AVG"),
+                              FUN = function(x, y) paste(x, y, sep = "_")))
+
+  # getting required columns
+  filtered_data <- stock_data[, c(macro_cols, stock_cols)]
+  
+  return(filtered_data)
+  
+}
+
+
+filtered_data <- get_filtered_df(input_stock)
+#filtered_data
+```
+
+```{r}
+
+get_variance <- function(filtered_df) {
+  
+  # getting stddev columns in finaldata
+  stddev_cols <- grep("_STDEV$", colnames(filtered_df), value = TRUE)
+
+  # extracting stddev df
+  stddev_df <- filtered_df[, stddev_cols]
+
+  # getting variances of all stocks in sector
+  variance_df <- stddev_df^2
+  head(variance_df)
+
+  # flattening variance
+  flatten_variance <- unlist(variance_df)  
+  
+  return(flatten_variance)
+  
+}
+
+flatten_variance <- get_variance(filtered_data)
+#flatten_variance
+
+```
+
+```{r}
+stock_variance <- function(stock) {
+  
+  # create column name
+  target_col <- paste0(stock, "_STDEV")
+  
+  sim_data <- stock_data[[target_col]]^2
+
+  return(sim_data)
+  
+}
+
+user_stock <- stock_variance("AMZN")
+#user_stock
+
+```
+
+```{r}
+
+get_plot <- function(alpha_likelihoodi, alpha_priori, sim_var, stock_var) {
+  # defining alpha likelihood
+  alpha_likelihood <- alpha_likelihoodi
+
+  # defining priors
+  alpha_prior <- alpha_priori
+  beta_prior <- mean(sim_var, na.rm=TRUE) / alpha_prior
+
+  # defining prior mean
+  prior_mean <- alpha_prior*beta_prior
+  
+  #x_vals <- seq(0, max(sim_data), length.out = 500)
+  #x_vals <- seq(0, max(stdev$AAPL^2), length.out = 500)
+  x_vals <- seq(0, quantile(stock_var, 0.99, na.rm=TRUE), length.out = 500)
+  
+  prior_dist <- gamma_prior(x_vals, alpha_prior, beta_prior)
+  post_dist <- gamma_posterior(x_vals, alpha_likelihood, alpha_prior, beta_prior, stock_var)
+  
+  
+  result <- ggplot() +
+      geom_line(aes(x = x_vals, y = prior_dist, color = "Prior"), size = 1.2) +
+      geom_line(aes(x = x_vals, y = post_dist, color = "Posterior"), size = 1.2) +
+      geom_vline(aes(xintercept = prior_mean, color = "Prior Mean"), linetype = "dashed", size = 1) + 
+      scale_color_manual(values = c("Prior" = "red", 
+                                    "Posterior" = "purple", 
+                                    "Prior Mean" = "red")) +
+      labs(x = expression(theta), Dy = "Density", title = "Gamma Prior vs. Posterior Distribution") +
+      theme_minimal() +
+      theme(legend.title = element_blank())
+  
+  print(result)
+}
+  
+
+std_plot <- get_plot(2, 1, flatten_variance, user_stock)
+
+```
+
+
+```{r}
+
+# creating app
+
+ui <- page_sidebar(
+  sidebar = sidebar(
+    # Select stock ticker
+    selectInput(
+      inputId = "stock_ticker",
+      label = "Select Stock Ticker",
+      choices = sort(sp500_stocks$Ticker)
+    ),
+    # Select Alpha Likelihood
+    numericInput(
+      inputId = "alpha_likelihood",
+      label = "Select Alpha Likelihood",
+      value = 2,
+      min = 0.1,
+      step = 0.1
+    ),
+    # Select Alpha Prior
+    numericInput(
+      inputId = "alpha_prior",
+      label = "Select Alpha Prior",
+      value = 1,
+      min = 0.1,
+      step = 0.1
+    ),
+  ),
+  # Output: Show scatterplot
+  card(plotOutput("distPlot")
+),)
+
+# Define server
+
+server <- function(input, output, session) {
+  output$distPlot <- renderPlot({
+    
+    # getting user stock input
+    stock_input <- input$stock_ticker
+    alpha_likelihood <- input$alpha_likelihood
+    alpha_prior <- input$alpha_prior
+    
+    # getting similar stocks
+    sim_stocks <- similar_stocks(stock_input)
+    
+    # getting filtered df
+    filtered_data <- get_filtered_df(sim_stocks)
+    
+    # getting variances of similar stocks
+    flatten_variance <- get_variance(filtered_data)
+    
+    # getting stock variance
+    target_variance <- stock_variance(stock_input)
+    
+    # getting plot
+    std_plot <- get_plot(alpha_likelihood, alpha_prior, flatten_variance, target_variance)
+    
+  })
+}
+
+# Create a Shiny app object
+
+shinyApp(ui = ui, server = server)
+
+
+
+```

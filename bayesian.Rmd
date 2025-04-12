@@ -6,13 +6,71 @@ output: html_document
 
 
 ```{r}
+# importing libraries
 library(ggplot2)
+library(MCMCpack)
+
 ```
+
+
+```{r}
+# loading sp500 stock list
+sp500_stocks <- read.csv("sp500_stocks.csv")
+head(sp500_stocks)
+
+```
+
+```{r}
+# loading final data
+stock_data <- read.csv("finaldata.csv")
+head(stock_data)
+
+```
+
+
+
+```{r}
+# getting stocks columns in finaldata
+column_names <- grep("_(RETURN|STDDEV|ROLL_AVG)$", colnames(stock_data), value = TRUE)
+
+# extracting ticker names from those columns
+extracted_tickers <- unique(sub("_(RETURN|STDDEV|ROLL_AVG)$", "", column_names))
+
+# filtering sp500_stocks using the extracted tickers
+sp500_stocks <- sp500_stocks[sp500_stocks$Ticker %in% extracted_tickers, ]
+head(sp500_stocks)
+
+```
+
+
+```{r}
+
+similar_stocks <- function(stock) {
+  
+  # getting sector in which the stock is
+  sector <- sp500_stocks$Sector[sp500_stocks$Ticker == stock]
+  
+  # getting peers in the same sector
+  peers <- sp500_stocks$Ticker[sp500_stocks$Sector == sector]
+  
+  # excluding the input stock
+  peers <- peers[peers != stock]
+  
+  return(peers)
+  
+}
+
+input_stock <- similar_stocks("AMZN")
+input_stock
+
+```
+
+
 
 #### Predicting Standard deviation using Gamma Distribution with Gamma Prior (known alpha)
 
 ```{r}
-library(MCMCpack)
+
 # Prior 
 gamma_prior <- function(x, alpha, beta) {
   return(dgamma(x, shape=alpha, scale=beta))
@@ -28,45 +86,76 @@ gamma_posterior <- function(x, alpha_likelihood, alpha_prior, beta_prior, sim_da
 }
 ```
 
-
 ```{r}
+# Define the macro columns that are always needed
+macro_cols <- c("Inflation.Rate", "RF")
 
-stdev <- read.csv('monthly_stdev.csv')
-head(stdev)
+# For each similar stock, generate the expected column names
+stock_cols <- as.vector(outer(input_stock,
+                              c("RETURN", "STDEV", "ROLL_AVG"),
+                              FUN = function(x, y) paste(x, y, sep = "_")))
 
-max(stdev$AAPL)
+# Subset the data with the desired macro columns and stock-specific columns
+filtered_data <- stock_data[, c(macro_cols, stock_cols)]
+
+# Display the first few rows of the filtered data
+head(filtered_data)
+
+
 ```
 
 ```{r}
+# getting stddev columns in finaldata
+stddev_cols <- grep("_STDEV$", colnames(filtered_data), value = TRUE)
 
-# Simulation
-#n <- 100
-#true_beta <- .0002
-#sim_data <- rinvgamma(n, shape = 2, scale = true_beta)
+# extracting stddev df
+stddev_df <- filtered_data[, stddev_cols]
 
-sim_data <- stdev$AAPL^2
-hist(sim_data, freq = F)
+# getting variances of all stocks in sector
+variance_df <- stddev_df^2
+head(variance_df)
+
+# flattening variance
+flatten_variance <- unlist(variance_df)
+flatten_variance
+
 ```
 
-likelihood for variance inv gamma 
-e value from b/alpha -1 know alpha (2) set equal 2 
-B would be what the variance is 
+```{r}
+stock_variance <- function(stock) {
+  
+  # create column name
+  target_col <- paste0(stock, "_STDEV")
+  
+  sim_data <- stock_data[[target_col]]^2
+  hist(sim_data, freq = F)
+  
+  return(sim_data)
+  
+}
 
+user_stock <- stock_variance("AMZN")
+user_stock
+
+```
 
 ```{r}
+# defining alpha likelihood
 alpha_likelihood <- 2
 
+# defining priors
 alpha_prior <- 1
-beta_prior <- .0003
-# instead try some other value 
+beta_prior <- mean(flatten_variance) / alpha_prior
 
+# defining prior mean
 prior_mean <- alpha_prior*beta_prior
 
 #x_vals <- seq(0, max(sim_data), length.out = 500)
-x_vals <- seq(0, max(stdev$AAPL^2), length.out = 500)
+#x_vals <- seq(0, max(stdev$AAPL^2), length.out = 500)
+x_vals <- seq(0, quantile(user_stock, 0.99), length.out = 500)
 
 prior_dist <- gamma_prior(x_vals, alpha_prior, beta_prior)
-post_dist <- gamma_posterior(x_vals, alpha_likelihood, alpha_prior, beta_prior, sim_data)
+post_dist <- gamma_posterior(x_vals, alpha_likelihood, alpha_prior, beta_prior, user_stock)
 
 
 ggplot() +
@@ -76,11 +165,12 @@ ggplot() +
   scale_color_manual(values = c("Prior" = "red", 
                                 "Posterior" = "purple", 
                                 "Prior Mean" = "red")) +
-  labs(x = expression(theta), y = "Density", title = "Gamma Prior vs. Posterior Distribution") +
+  labs(x = expression(theta), Dy = "Density", title = "Gamma Prior vs. Posterior Distribution (AAPL)") +
   theme_minimal() +
   theme(legend.title = element_blank())
 
 ```
+
 
 IMperical bayes 
 to choose parameters 
@@ -140,6 +230,7 @@ flatten_variance <- unlist(variance_df)
 #flatten_variance
 
 ```
+
 
 ```{r}
 # defining alpha likelihood
