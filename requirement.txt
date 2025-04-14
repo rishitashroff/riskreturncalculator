@@ -1,0 +1,14 @@
+numpy
+pandas
+yfinance
+pandas_datareader
+cpi
+wbdata
+scikit-learn
+tensorflow
+matplotlib
+seaborn
+pickle
+
+
+
