@@ -342,10 +342,8 @@ ui <- page_navbar(
      tags$h5(
        "This app serves as a financial tool for investors to make informed decisions by understanding
         the volatility of a stock compared to its peers. The volatility or variance of a stock is 
-        calculated using an Inverse Gamma-Gamma Bayesian Model. For this model, we make an assumption that
-        the variance of the stock depends on the mean variance of other stocks in the same sector. However, if
-        you are someone who has more financial knowledge, you may select the 'Get Stocks with Similar
-        Price'. This will indicate that there is more certainty in the prior belief."),
+        calculated using an Inverse Gamma-Gamma Bayesian Model. For this model, we make an assumption that 
+        the variance of the stock chosen behaves similarly to the mean variance similar stocks in the same sector. The 'Get Stocks with Similar Prices' Option further constrains it to other stocks with a comparable price and same sector, allowing for a more tailored prior belief and is useful for users who are knowledgeable and believe price similarity reflects comparable risk profiles."),
      tags$br(),
      tags$h3("Inverse Gamma-Gamma Model Explanation"),
      tags$h5("The Inverse Gamma distribution with a known alpha is a commonly used distribution to model
@@ -363,9 +361,8 @@ ui <- page_navbar(
      tags$h5("Alpha Likelihood: A weight of how strongly you believe the observed data influences the
               variance of a stock. For this calculator, the observed data is based on S&P500 Stocks since
               2005."),
-     tags$h5("Alpha Prior: A weight of how strongly you believe your initial guess influences the variance
-              of a stock. Remember, the initial guess here is that the variance of a stock is dependent on
-              the mean variance of other similar stocks in the same sector."),
+     tags$h5("Alpha Prior: A measure of how strong your trust is on your prior belief on the distribution of the variance before seeing any new data."),
+      tags$h5("Beta Prior: The scale parameter of the prior, derived from the mean of similar stocks in the same sector, adjusting the spread of the prior distribution and certainty."),
      tags$h5("Posterior Mean Estimate: This is the estimated mean of the stock's volatility after considering
               the initial assumption and the observed data. A higher mean will indicate that there is more
               variance, while a lower mean will indicate that there is low volatility.")
