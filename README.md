@@ -29,7 +29,10 @@ pip install -r requirements.txt
 Once all libraries are downloaded and you are in the appropriate conda environment you can simply run all the cells in the jupyter notebook. 
 
 ## Shiny App and Empirical Bayesian Instructions(EmpiricalBayesian.Rmd)
-Install all packages needed and run all cells in the R Markdown file. 
+Install all packages needed and run all cells in the R Markdown file. To run this file, you can download the following files:
+- result.csv
+- filtered_sp500_stocks.csv
+"Note: Downloading the 3 files and running the .rmd file would be faster if you want to see the app only."
 
 ## Short Reflection on Results
 The LSTM perform poorly with macroeconomic indicators such as risk-free rate, inflation rate, and derived attribute such as 30-day rolling average, and standard deviation for stock return prediction.
