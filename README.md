@@ -32,6 +32,7 @@ Once all libraries are downloaded and you are in the appropriate conda environme
 Install all packages needed and run all cells in the R Markdown file. To run this file, you can download the following files:
 - result.csv
 - filtered_sp500_stocks.csv
+  
 "Note: Downloading the 3 files and running the .rmd file would be faster if you want to see the app only."
 
 ## Short Reflection on Results
