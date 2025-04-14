@@ -229,17 +229,13 @@ get_plot <- function(alpha_likelihoodi, alpha_priori, sim_var, stock_var) {
       theme_minimal() +
       theme(legend.title = element_blank())
   
-  print(result)
-  cat("Prior Mean:", prior_mean, "\n") 
-  cat("Posterior Mean:", posterior_mean, "\n")
-  cat("Percentage Change in Means:", pct_change, "% \n")
-  cat("Mean Absolute Error (MAE):", mae)
-  
+  return(list(plot = result, priormean = prior_mean, posteriormean = posterior_mean, 
+              pctchange = pct_change, mae = mae)) 
 }
   
 
 std_plot <- get_plot(2, 1, flatten_variance, user_stock)
-
+std_plot
 ```
 
 ## ANALYSIS
@@ -334,7 +330,55 @@ for (i in unique(sp500_stocks$Sector)) {
 
 # creating app
 
-ui <- page_sidebar(
+ui <- page_navbar(
+  title = "Stock Volatility Calculator",
+  
+  nav_panel(title = "Project Description", 
+  
+  fluidPage(
+    tags$h1("Stock Variance Prediction Using Bayesian Modeling"),
+    
+    tags$div(
+     tags$h5(
+       "This app serves as a financial tool for investors to make informed decisions by understanding
+        the volatility of a stock compared to its peers. The volatility or variance of a stock is 
+        calculated using an Inverse Gamma-Gamma Bayesian Model. For this model, we make an assumption that
+        the variance of the stock depends on the mean variance of other stocks in the same sector. However, if
+        you are someone who has more financial knowledge, you may select the 'Get Stocks with Similar
+        Price'. This will indicate that there is more certainty in the prior belief."),
+     tags$br(),
+     tags$h3("Inverse Gamma-Gamma Model Explanation"),
+     tags$h5("The Inverse Gamma distribution with a known alpha is a commonly used distribution to model
+              uncertainty or variance of a normal distribution. It has two parameters - alpha & beta. The
+              alpha determines the height of the distribution and the beta determines the spread. These 
+              hyperparameters show the level of certainty or uncertainty in our prior beliefs. The gamma
+              distribution is a conjugate prior and models the behavior of variance well since it models 
+              positive continuous values."),
+     tags$br(),
+     tags$h3("Explanation of Terms"),
+     tags$h5("Stock: The stock's ticker for which you want the variance."),
+     tags$h5("Get Stocks with Similar Price: If you believe that the variance of a stock should be calculated
+              using the mean variance of stocks that are not only within the same sector but also around the
+              same price range, then please select this option."),
+     tags$h5("Alpha Likelihood: A weight of how strongly you believe the observed data influences the
+              variance of a stock. For this calculator, the observed data is based on S&P500 Stocks since
+              2005."),
+     tags$h5("Alpha Prior: A weight of how strongly you believe your initial guess influences the variance
+              of a stock. Remember, the initial guess here is that the variance of a stock is dependent on
+              the mean variance of other similar stocks in the same sector."),
+     tags$h5("Posterior Mean Estimate: This is the estimated mean of the stock's volatility after considering
+              the initial assumption and the observed data. A higher mean will indicate that there is more
+              variance, while a lower mean will indicate that there is low volatility.")
+    )
+    
+  )
+  ),
+  
+  nav_panel(title = "Calculator",
+  
+  page_sidebar(
+  title = "Your S&P 500 Stock Volatility",
+  
   sidebar = sidebar(
     # Select stock ticker
     selectInput(
@@ -342,6 +386,13 @@ ui <- page_sidebar(
       label = "Select Stock Ticker",
       choices = sort(sp500_stocks$Ticker)
     ),
+    # Select Price Range
+    checkboxInput(
+      inputId = "price_range",
+      label = "Get Stocks with Similar Price",
+      value = TRUE
+    ),
+    
     # Select Alpha Likelihood
     numericInput(
       inputId = "alpha_likelihood",
@@ -360,21 +411,75 @@ ui <- page_sidebar(
     ),
   ),
   # Output: Show scatterplot
-  card(plotOutput("distPlot")
-),)
+  card(plotOutput(outputId = "distPlot")),
+  card(tableOutput(outputId = "analysis")),
+  
+)
+),
+
+  nav_spacer(),
+  nav_menu(
+    title = "Links",
+    align = "right",
+    nav_item(tags$a("GitHub", href = "https://github.com/rishitashroff/riskreturncalculator")),
+    nav_item(tags$a("Project Report", href = "savepdfingoogledriveandshare")),
+    nav_item(tags$a("Virtual Poster", href = "savepresingoogledriveandshare"))
+  ),
+
+  theme = bs_theme(preset = "yeti")
+
+)
 
 # Define server
 
 server <- function(input, output, session) {
-  output$distPlot <- renderPlot({
+  
+  output$analysis <- renderTable({
     
     # getting user stock input
     stock_input <- input$stock_ticker
+    user_price_choice <- input$price_range
     alpha_likelihood <- input$alpha_likelihood
     alpha_prior <- input$alpha_prior
     
     # getting similar stocks
-    sim_stocks <- similar_stocks(stock_input)
+    sim_stocks <- similar_stocks(stock_input, user_price_choice)
+    
+    # getting filtered df
+    filtered_data <- get_filtered_df(sim_stocks)
+    
+    # getting variances of similar stocks
+    flatten_variance <- get_variance(filtered_data)
+    
+    # getting stock variance
+    target_variance <- stock_variance(stock_input)
+    
+    # getting analysis from plot function
+    std_plot <- get_plot(alpha_likelihood, alpha_prior, flatten_variance, target_variance)
+    
+    # creating a df of analysis so it can be outputed in table format
+    analysis_table <- data.frame("Data Label" = c("Prior Mean Estimate", "Posterior Mean Estimate",
+                                   "Percentage Change in Estimates (%)", "Mean Absolute Error"),
+                                 "Values" = c(std_plot$priormean, std_plot$posteriormean,
+                                            std_plot$pctchange, std_plot$mae))
+  
+  },
+  
+  striped = TRUE, spacing = "l", align = "l", digits = 15, width = "90%"
+  
+  )
+  
+  
+  output$distPlot <- renderPlot({
+    
+    # getting user stock input
+    stock_input <- input$stock_ticker
+    user_price_choice <- input$price_range
+    alpha_likelihood <- input$alpha_likelihood
+    alpha_prior <- input$alpha_prior
+    
+    # getting similar stocks
+    sim_stocks <- similar_stocks(stock_input, user_price_choice)
     
     # getting filtered df
     filtered_data <- get_filtered_df(sim_stocks)
@@ -387,6 +492,8 @@ server <- function(input, output, session) {
     
     # getting plot
     std_plot <- get_plot(alpha_likelihood, alpha_prior, flatten_variance, target_variance)
+    
+    std_plot$plot
     
   })
 }
