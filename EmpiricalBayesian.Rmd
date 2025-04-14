@@ -414,7 +414,7 @@ ui <- page_navbar(
     align = "right",
     nav_item(tags$a("GitHub", href = "https://github.com/rishitashroff/riskreturncalculator")),
     nav_item(tags$a("Project Report", href = "https://docs.google.com/document/d/1-CrjMQnKnEyCtS8y46VeBVVLz2ILXbv-j_w-0QGlTTc/edit?usp=sharing")),
-    nav_item(tags$a("Virtual Poster", href = "savepresingoogledriveandshare"))
+    nav_item(tags$a("Virtual Poster", href = "https://northeastern-my.sharepoint.com/:p:/r/personal/shroff_ri_northeastern_edu/Documents/poster%201.pptx?d=w1de8465d54e6483a863afd655bd72525&csf=1&web=1&e=GecrhF"))
   ),
 
   theme = bs_theme(preset = "yeti")
