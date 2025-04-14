@@ -238,12 +238,6 @@ std_plot <- get_plot(2, 1, flatten_variance, user_stock)
 std_plot
 ```
 
-## ANALYSIS
-
-The variance of a stock is predicted using the gamma distribution with an inverse gamma prior and a known alpha. The assumption that we make is that the variance of a stock depends on the variance of other stocks in the same sector. Based on this initial belief, we determine the prior parameters. The prior mean is the mean of the variances of similar stocks in the same sector. The alpha prior helps with determining the shape of the prior distribution, where a smaller alpha results in a more skewed to the right distribution while a larger alpha results in a symmetrical bell-shaped curve. Our choice of setting prior alpha to be 1, shows that we are uncertain about our initial belief. This alpha also influences the prior beta and the prior mean.
-
-1.5% increase in mean for AXON. This suggests it has a higher variance compared to its peers which was our initial belief. Prior mean (mean of variances of similar stocks in the same sector) is 0.00042 while the posterior mean is 0.00105. We can also see that the posterior distribution is narrower than the prior distribution. This implies a strong certainty in the posterior mean.
-
 ```{r}
 ### ANALYSIS
 
@@ -419,7 +413,7 @@ ui <- page_navbar(
     title = "Links",
     align = "right",
     nav_item(tags$a("GitHub", href = "https://github.com/rishitashroff/riskreturncalculator")),
-    nav_item(tags$a("Project Report", href = "savepdfingoogledriveandshare")),
+    nav_item(tags$a("Project Report", href = "https://docs.google.com/document/d/1-CrjMQnKnEyCtS8y46VeBVVLz2ILXbv-j_w-0QGlTTc/edit?usp=sharing")),
     nav_item(tags$a("Virtual Poster", href = "savepresingoogledriveandshare"))
   ),
 
@@ -458,7 +452,7 @@ server <- function(input, output, session) {
     analysis_table <- data.frame("Data Label" = c("Prior Mean Estimate", "Posterior Mean Estimate",
                                    "Percentage Change in Estimates (%)", "Mean Absolute Error"),
                                  "Values" = c(std_plot$priormean, std_plot$posteriormean,
-                                            std_plot$pctchange, std_plot$mae))
+                                              std_plot$pctchange, std_plot$mae))
   
   },
   
